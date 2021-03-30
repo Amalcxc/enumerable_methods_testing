@@ -18,4 +18,19 @@ describe Enumerable do
       expect(range.my_each{|num| num}).to eql((1..50))
     end
   end
+
+  describe "#my_each_with_index" do
+    it 'returns an enumerator if no block is given' do        
+      expect(array.my_each.is_a? Enumerable).to eql(array.to_enum.is_a? Enumerable)
+    end
+
+    it 'returns a hash with the index as the value of the key' do
+      %w(cat dog wombat).each_with_index { |item, index| hash[item] = index}
+      expect(hash).to eql({"cat"=>0, "dog"=>1, "wombat"=>2})
+    end
+
+    it 'returns a range if the block is given' do
+      expect(range.my_each{|num| num}).to eql((1..50))
+    end
+  end
 end
