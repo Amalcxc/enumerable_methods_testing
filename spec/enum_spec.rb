@@ -89,6 +89,10 @@ describe Enumerable do
       expect(%w[ant bear cat].my_all?(/t/)).to eql(false)
     end
 
+    it 'returns whether pattern === element for every collection member' do
+      expect(%w[ant bear cat].my_all?(/a/)).to_not eql(false)
+    end
+
     it 'returns true if every element is a member of a given class' do
       expect([1, 2i, 3.14].my_all?(Numeric)).to eql(true)
     end
@@ -114,6 +118,10 @@ describe Enumerable do
     it 'returns whether pattern === element for any collection member' do
       expect(%w[ant bear cat].my_any?(/d/)).to eql(false)
     end
+
+    it 'returns whether pattern === element for any collection member' do
+      expect(%w[ant bear cat].my_any?(/r/)).to_not eql(false)
+    end
   end
 
   describe '#my_none?' do
@@ -136,11 +144,19 @@ describe Enumerable do
     it 'returns whether pattern === element for none collection member' do
       expect(%w[ant bear cat].my_none?(/d/)).to eql(true)
     end
+
+    it 'returns whether pattern === element for none collection member' do
+      expect(%w[ant bear cat].my_none?(/r/)).to_not eql(true)
+    end
   end
 
   describe '#my_inject?' do
     it 'returns the sum of the items when the input is a range and no initial value is given' do
       expect((5..10).my_inject { |sum, n| sum + n }).to eql(45)
+    end
+
+    it 'returns the sum of the items and the initial when a symbol and initial value is given instead of a block' do
+      expect((5..10).my_inject(10) { |sum, n| sum + n }).to_not eql(45)
     end
 
     it 'returns the sum of the items and the initial value when the input is a range and initial value is given' do
