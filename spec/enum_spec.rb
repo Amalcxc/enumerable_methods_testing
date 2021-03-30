@@ -14,6 +14,10 @@ describe Enumerable do
       expect(array.my_each { |num| num }).to eql([1, 2, 3, 4])
     end
 
+    it 'returns an array if the block is given' do
+      expect(array.my_each { |num| num }).to_not eql([])
+    end
+
     it 'returns a range if the block is given' do
       expect(range.my_each { |num| num }).to eql((1..10))
     end
@@ -32,6 +36,10 @@ describe Enumerable do
     it 'returns a range if the block is given' do
       expect(range.my_each_with_index { |num| num }).to eql((1..10))
     end
+
+    it 'returns a range if the block is given' do
+      expect(range.my_each_with_index { |num| num }).to_not eql([])
+    end
   end
 
   describe '#my_select' do
@@ -41,6 +49,10 @@ describe Enumerable do
 
     it 'returns a even number if the block is given' do
       expect(range.my_select(&:even?)).to eql(([2, 4, 6, 8, 10]))
+    end
+
+    it 'returns a even number if the block is given' do
+      expect(range.my_select(&:even?)).to_not eql([])
     end
   end
 
@@ -55,6 +67,10 @@ describe Enumerable do
 
     it 'returns a count number if a block and arguments is given' do
       expect(array.my_count(&:even?)).to eql(2)
+    end
+
+    it 'returns a count number if a block and arguments is given' do
+      expect(array.my_count(&:even?)).to_not eql(0)
     end
   end
 
@@ -183,6 +199,10 @@ describe Enumerable do
 
     it 'returns the multiplication of each item in a range' do
       expect(multiply_els(5..10)).to eql(151_200)
+    end
+
+    it 'returns the multiplication of each item in a range' do
+      expect(multiply_els(5..10)).to_not eql(0)
     end
   end
 end

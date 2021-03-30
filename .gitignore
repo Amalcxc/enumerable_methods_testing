@@ -6,5 +6,4 @@
 ####################
 Gemfile.lock
 Gemfile
-.rubocop.yml
 test.rb
