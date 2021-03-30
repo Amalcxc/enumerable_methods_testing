@@ -118,4 +118,26 @@ describe Enumerable do
       expect(%w[ant bear cat].my_any?(/d/)).to eql(false)
     end
   end
+
+  describe '#my_none?' do
+  it 'returns true if no block is given and none of the items are true' do
+    expect([nil, false].my_none?).to eql(true)
+  end
+
+  it 'returns false if no block is given and at least one of the items are true' do
+    expect([nil, false, true].my_none?).to eql(false)
+  end
+
+  it 'returns true if none of the elements in the array returns true for the condition' do
+    expect(%w[ant bear cat].my_none? { |word| word.length == 5 }).to eql(true)
+  end
+
+  it 'returns false if at least one of the elements returns true for the condition' do
+    expect(%w[ant bear cat].my_none? { |word| word.length >= 4 }).to eql(false)
+  end
+
+  it 'returns whether pattern === element for none collection member' do
+    expect(%w[ant bear cat].my_none?(/d/)).to eql(true)
+  end
+end
 end
