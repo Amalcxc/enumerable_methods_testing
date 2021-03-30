@@ -55,6 +55,15 @@ Run the following command into your terminal:
 ruby enumerable.rb
 ```
 
+## How to test 
+
+1. Open your terminal
+2. To install Rspec, run the following command into your terminal: </br>
+``` gem install rspec ```
+3. Go to your local project repository with the cd command.
+4. To run the test examples, run the following command into your terminal: </br>
+``` rspec ```
+
 ## Authors
 
 👤 **Carlos Osorio**
