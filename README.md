@@ -82,7 +82,7 @@ ruby enumerable.rb
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](Feel free to check the [issues page](https://github.com/Amalcxc/enumerable_methods_testing/issues).
+Feel free to check the [issues page](https://github.com/Amalcxc/enumerable_methods_testing/issues).
 
 ## Show your support
 
