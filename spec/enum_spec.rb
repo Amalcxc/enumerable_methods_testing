@@ -70,4 +70,30 @@ describe Enumerable do
       expect(array.my_map {"cat"}).to eql(["cat", "cat", "cat", "cat"])
     end
   end
+
+  describe '#my_all?' do
+    it 'returns true if no block is given and none of the items are false or nil' do
+      expect([].my_all?).to eql(true)
+    end
+
+    it 'returns false if no block is given and at least one of the items are false or nil' do
+      expect([nil, true, 99].my_all?).to eql(false)
+    end
+
+    it 'returns true if every element in the array returns true for the condition' do
+      expect(%w[ant bear cat].my_all? { |word| word.length >= 3 }).to eql(true)
+    end
+
+    it 'returns false if at least one of the elements returns false for the condition' do
+      expect(%w[ant bear cat].my_all? { |word| word.length >= 4 }).to eql(false)
+    end
+
+    it 'returns whether pattern === element for every collection member' do
+      expect(%w[ant bear cat].my_all?(/t/)).to eql(false)
+    end
+
+    it 'returns true if every element is a member of a given class' do
+      expect([1, 2i, 3.14].my_all?(Numeric)).to eql(true)
+    end
+  end
 end
