@@ -1,0 +1,9 @@
+# Folders #
+####################
+/.vscode
+
+# Files #
+####################
+Gemfile.lock
+Gemfile
+test.rb
