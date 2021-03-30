@@ -96,4 +96,26 @@ describe Enumerable do
       expect([1, 2i, 3.14].my_all?(Numeric)).to eql(true)
     end
   end
+
+  describe '#my_any?' do
+    it 'returns false if no block is given and none of the items are true' do
+      expect([].my_any?).to eql(false)
+    end
+
+    it 'returns true if no block is given and at least one of the items are true' do
+      expect([nil, true, 99].my_any?).to eql(true)
+    end
+
+    it 'returns true if at least one element in the array returns true for the condition' do
+      expect(%w[ant bear cat].my_any? { |word| word.length >= 3 }).to eql(true)
+    end
+
+    it 'returns true if at least one of the elements returns true for the condition' do
+      expect(%w[ant bear cat].my_any? { |word| word.length >= 4 }).to eql(true)
+    end
+
+    it 'returns whether pattern === element for any collection member' do
+      expect(%w[ant bear cat].my_any?(/d/)).to eql(false)
+    end
+  end
 end
