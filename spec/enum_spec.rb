@@ -162,4 +162,14 @@ it 'returns the longest word in the array, stored in the accumulator variable' d
   expect(%w[cat sheep bear].my_inject { |memo, word| memo.length > word.length ? memo : word }).to eql('sheep')
 end
 end
+
+describe '#multiply_els' do
+it 'returns the multiplication of each item in an array' do
+  expect(multiply_els([2, 4, 5])).to eql(40)
+end
+
+it 'returns the multiplication of each item in a range' do
+  expect(multiply_els(5..10)).to eql(151_200)
+end
+end
 end
