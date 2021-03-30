@@ -44,11 +44,11 @@ describe Enumerable do
 
   describe '#my_select' do
     it 'returns a range if the block is given' do
-      expect(range.my_select { |i| i % 3 == 0 }).to eql(([3, 6, 9]))
+      expect(range.my_select { |i| i % 3 == 0 }).to eql([3, 6, 9])
     end
 
     it 'returns a even number if the block is given' do
-      expect(range.my_select(&:even?)).to eql(([2, 4, 6, 8, 10]))
+      expect(range.my_select(&:even?)).to eql([2, 4, 6, 8, 10])
     end
 
     it 'returns a even number if the block is given' do
