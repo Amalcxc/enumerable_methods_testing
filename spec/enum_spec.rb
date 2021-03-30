@@ -140,4 +140,26 @@ describe Enumerable do
     expect(%w[ant bear cat].my_none?(/d/)).to eql(true)
   end
 end
+
+describe '#my_inject?' do
+it 'returns the sum of the items when the input is a range and no initial value is given' do
+  expect((5..10).my_inject { |sum, n| sum + n }).to eql(45)
+end
+
+it 'returns the sum of the items and the initial value when the input is a range and initial value is given' do
+  expect((5..10).my_inject(10) { |sum, n| sum + n }).to eql(55)
+end
+
+it 'returns the sum of the items when a symbol is given instead of a block' do
+  expect((5..10).my_inject(:+)).to eql(45)
+end
+
+it 'returns the sum of the items and the initial when a symbol and initial value is given instead of a block' do
+  expect((5..10).my_inject(6, :+)).to eql(51)
+end
+
+it 'returns the longest word in the array, stored in the accumulator variable' do
+  expect(%w[cat sheep bear].my_inject { |memo, word| memo.length > word.length ? memo : word }).to eql('sheep')
+end
+end
 end
